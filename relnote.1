@@ -1,0 +1,51 @@
+.Dd 9/12/24               \" DATE
+.Dt RELNOTE 1      \" Program name and manual section number
+.Os Darwin
+.Sh NAME                 \" Section Header - required - don't modify
+.Nm relnote -
+.Nm Release notification.
+.Sh SYNOPSIS             \" Section Header - required - don't modify
+.Nm
+.Op Fl f \fUhtml_path\fP
+.Op Fl j \fUjs_path\fP
+.Op Fl u \fUurl\fP
+.Op Fl d \fUdate_time\fP
+.Op Fl wa \fUwarning-activation\fP
+.Op Fl wd \fUwarning-dismissal\fP
+.Sh DESCRIPTION          \" Section Header - required - don't modify
+.B relnote
+.Nm command creates a notification for users about a release date by:
+
+.B 1) Injecting a specified JavaScript file into an HTML file.
+
+.Nm 2) Adding a <script> block to the HTML file to set apiData and deployDate variables with the provided values.
+.Nm relnote.
+.Pp
+A tool designed to assist in managing release notes for your project. It allows users to generate and maintain release notes easily.
+.Pp                      \" Inserts a space
+A list of items with descriptions:
+.Bl -tag -width -indent  \" Begins a tagged list
+.It Feature A
+Explanation of feature A
+.It Feature B
+Explanation of feature B
+.El                      \" Ends the list
+.Pp
+A list of flags and their descriptions:
+.Bl -tag -width -indent  \" Differs from above in tag removed
+.It Fl a                 \" -a flag as a list item
+Specify the path to the release notes file.
+.It Fl b
+Generate a new release note.
+.El                      \" Ends the list
+.Pp
+.Sh FILES                \" File used or created by the topic of the man page
+.Bl -tag -width "/usr/local/bin/relnote.sh" -compact
+.It Pa /usr/local/bin/relnote.sh
+The main script for generating release notes.
+.El                      \" Ends the list
+.Sh SEE ALSO
+.Xr bash 1 ,
+.Xr sh 1
+.\" .Sh BUGS              \" Document known, unremedied bugs
+.\" .Sh HISTORY           \" Document history if command behaves in a unique manner
