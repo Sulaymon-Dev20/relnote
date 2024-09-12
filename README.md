@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://github.com/Sulaymon-Dev20/relnote/blob/main/RELNOTE.jpg?raw=true" width="200" alt='Quran for Android logo' style="border-radius: 50%;"/>
+<img src="https://github.com/Sulaymon-Dev20/relnote/blob/main/relnote.png?raw=true" width="200" alt='Quran for Android logo'/>
 
 # RELNOTE
 
