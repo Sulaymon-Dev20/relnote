@@ -12,13 +12,13 @@ WARNING_DISMISSAL=60000       # Default value set to 60 seconds in milliseconds
 usage() {
   echo -e "📜 Usage: relnote [OPTIONS]"
   echo -e "Options:"
-  echo -e "  -f, --file <html_path>       Specify the HTML file path (default is index.html)"
-  echo -e "  -j, --js <js_path>      Specify the JS file path (default is note.js)"
-  echo -e "  -u, --url <url>              Specify the URL for API data"
-  echo -e "  -d, --delay <date_time>      Specify the delay time in the format 'Sun Aug 25 12:03:19 CDT 2024'"
+  echo -e "  -f, --file <html_path>         Specify the HTML file path (default is index.html)"
+  echo -e "  -j, --js <js_path>             Specify the JS file path (default is note.js)"
+  echo -e "  -u, --url <url>                Specify the URL for API data"
+  echo -e "  -d, --delay <date_time>        Specify the delay time in the format 'Sun Aug 25 12:03:19 CDT 2024'"
   echo -e "  -wa, --warning-activation <ms> Set the warning activation time in milliseconds (default is $WARNING_ACTIVATION)"
-  echo -e "  -wd, --warning-dismissal <ms> Set the warning dismissal time in milliseconds (default is $WARNING_DISMISSAL)"
-  echo -e "  -h, --help                   Display this help message"
+  echo -e "  -wd, --warning-dismissal <ms>  Set the warning dismissal time in milliseconds (default is $WARNING_DISMISSAL)"
+  echo -e "  -h, --help                     Display this help message"
   exit 1
 }
 
