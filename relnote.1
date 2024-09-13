@@ -1,51 +1,111 @@
-.Dd 9/12/24               \" DATE
-.Dt RELNOTE 1      \" Program name and manual section number
-.Os Darwin
-.Sh NAME                 \" Section Header - required - don't modify
-.Nm relnote -
-.Nm Release notification.
-.Sh SYNOPSIS             \" Section Header - required - don't modify
-.Nm
-.Op Fl f \fUhtml_path\fP
-.Op Fl j \fUjs_path\fP
-.Op Fl u \fUurl\fP
-.Op Fl d \fUdate_time\fP
-.Op Fl wa \fUwarning-activation\fP
-.Op Fl wd \fUwarning-dismissal\fP
-.Sh DESCRIPTION          \" Section Header - required - don't modify
+.TH RELNOTE 1 "September 2024" "1.0" "relnote Manual"
+
+.SH NAME
+relnote \- a tool for creating and managing release notes
+
+.SH SYNOPSIS
 .B relnote
-.Nm command creates a notification for users about a release date by:
+[\-f html_path] [\-j js_path] [\-u url] [\-d delay] [\-wa warning_activation] [\-wd warning_dismissal]
 
-.B 1) Injecting a specified JavaScript file into an HTML file.
+.SH DESCRIPTION
+.B relnote
+is a lightweight command-line tool designed for developers to simplify the process of creating, updating, and managing release notes. Release notes are essential documents outlining new features, changes, and bug fixes in each release of a software project. relnote helps automate the generation of these notes by following structured templates and extracting information from project history or changelogs.
 
-.Nm 2) Adding a <script> block to the HTML file to set apiData and deployDate variables with the provided values.
-.Nm relnote.
-.Pp
-A tool designed to assist in managing release notes for your project. It allows users to generate and maintain release notes easily.
-.Pp                      \" Inserts a space
-A list of items with descriptions:
-.Bl -tag -width -indent  \" Begins a tagged list
-.It Feature A
-Explanation of feature A
-.It Feature B
-Explanation of feature B
-.El                      \" Ends the list
-.Pp
-A list of flags and their descriptions:
-.Bl -tag -width -indent  \" Differs from above in tag removed
-.It Fl a                 \" -a flag as a list item
-Specify the path to the release notes file.
-.It Fl b
-Generate a new release note.
-.El                      \" Ends the list
-.Pp
-.Sh FILES                \" File used or created by the topic of the man page
-.Bl -tag -width "/usr/local/bin/relnote.sh" -compact
-.It Pa /usr/local/bin/relnote.sh
-The main script for generating release notes.
-.El                      \" Ends the list
-.Sh SEE ALSO
-.Xr bash 1 ,
-.Xr sh 1
-.\" .Sh BUGS              \" Document known, unremedied bugs
-.\" .Sh HISTORY           \" Document history if command behaves in a unique manner
+The tool can be customized to match a variety of project workflows and formats, making it useful for both small projects and large-scale development teams.
+
+.PP
+Features of
+.B relnote:
+.IP
+• Release Note Templates: Users can create custom templates for release notes, and the tool can automatically fill them in with project-specific data like version numbers, dates, and changes.
+
+.IP
+• Version Tracking: Automatically generate release notes based on the version history of your project.
+
+.IP
+• Changelog Management: Integrates with your project’s changelog to fetch data on new features, fixes, and improvements.
+
+.IP
+• Flexible Output: The tool can output release notes in different formats, including plain text, Markdown, and HTML.
+
+.IP
+• Multilingual Support: Localize release notes into multiple languages for international teams or user bases.
+
+.SH OPTIONS
+The following options can be used to customize the behavior of
+.B relnote:
+
+.TP
+\fB\-f\fR, \fB\-\-file\fR
+Set the HTML file path (default is \fIindex.html\fR).
+
+.TP
+\fB\-j\fR, \fB\-\-js\fR
+Set the JavaScript file path (default is \fInote.js\fR).
+
+.TP
+\fB\-u\fR, \fB\-\-url\fR
+Set the URL to fetch API data for the release.
+
+.TP
+\fB\-d\fR, \fB\-\-delay\fR
+Set the specific release time in a human-readable format.
+
+.TP
+\fB\-wa\fR, \fB\-\-warning\-activation\fR
+Set the time to trigger a warning.
+
+.TP
+\fB\-wd\fR, \fB\-\-warning\-dismissal\fR
+Set the time for the warning to disappear.
+
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Show help message.
+
+.SH EXAMPLES
+To update
+\fIindex.html\fR
+with a custom JavaScript path:
+
+.EX
+$ relnote \-\-file my_page.html \-\-js /path/to/custom_note.js
+.EE
+This command modifies \fImy_page.html\fR and injects the custom JavaScript file located at \fI/path/to/custom_note.js\fR.
+
+.PP
+Set a warning activation and dismissal time:
+.EX
+$ relnote \-\-warning\-activation 43200000 \-\-warning\-dismissal 120000
+.EE
+This sets the warning activation time to 12 hours (43200000 milliseconds) and the warning dismissal time to 2 minutes (120000 milliseconds).
+
+.PP
+Set a deployment time:
+.EX
+$ relnote \-\-delay "Sun Sep 15 10:00:00 EDT 2024"
+.EE
+This sets a delayed activation for the HTML file, which will activate at the specified date and time.
+
+.SH FILES
+.I /usr/local/bin/relnote
+.br
+.I /usr/share/man/man1/relnote.1
+.br
+.I /usr/share/relnote/note.js
+
+.SH LICENSE
+This project is licensed under the MIT License.
+
+.SH BUGS
+Report bugs at:
+.BR https://github.com/Sulaymon-Dev20/relnote
+or contact:
+.BR https://portfolio.ofnur.com/contact
+
+.SH AUTHORS
+Name: Nuriddin Bobonorov
+.br
+Email: sulaymon1w@gmail.com
+.br
+Website: \fIhttp://portfolio.ofnur.com/\fR
