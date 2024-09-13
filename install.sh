@@ -12,9 +12,8 @@ else
   exit 1
 fi
 
-# Copy relnote.sh to /usr/bin/
-echo "📁 Copying relnote.sh to /usr/bin/relnote..."
-if cp relnote.sh /usr/bin/relnote; then
+echo "📁 Copying relnote.sh to /usr/local/bin/relnote..."
+if cp relnote.sh /usr/local/bin/relnote; then
   echo "✅ File copied successfully."
 else
   echo "❌ Failed to copy relnote.sh. Please check your permissions and try again."
