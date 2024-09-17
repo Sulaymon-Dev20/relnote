@@ -128,7 +128,7 @@ if [[ -z "$API_DATA" && -z "$DEPLOY_TIME" ]]; then
 fi
 
 # Create script content to inject into HTML
-SCRIPT_CONTENT="<script src='note.js'></script> <script> apiData = '${API_DATA:-""}'; delayDate = '${DEPLOY_TIME:-""}'; warningActivation = $WARNING_ACTIVATION; warningDismissal = $WARNING_DISMISSAL; message = $MESSAGE; if (delayDate != null && delayDate.length > 0) { calculateDate(delayDate); } else { getDateByIP(); } </script>"
+SCRIPT_CONTENT="<script src='note.js'></script> <script> apiData = '${API_DATA:-""}'; delayDate = '${DEPLOY_TIME:-""}'; warningActivation = $WARNING_ACTIVATION; warningDismissal = $WARNING_DISMISSAL; message = '$MESSAGE'; if (delayDate != null && delayDate.length > 0) { calculateDate(delayDate); } else { getDateByIP(); } </script>"
 ESCAPED_JS_CONTENT=$(printf '%s' "$SCRIPT_CONTENT" | sed 's/[&/\]/\\&/g')
 
 # Check if the JavaScript file exists

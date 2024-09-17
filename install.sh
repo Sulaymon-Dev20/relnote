@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Check if the user is root
+if [ "$EUID" -ne 0 ]; then
+  echo "❌ Error: You must be root to run this script."
+  exit 1
+fi
+
 # Print logo with emoji
 echo "🚀 Starting RELNOTE installation..."
 
@@ -53,3 +59,4 @@ fi
 
 # Completion message
 echo "🎉 Installation completed successfully!"
+relnote -v

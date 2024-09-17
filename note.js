@@ -1,8 +1,8 @@
 let apiData = 'https://release.ofnur.com/portolia';
 // const deployDate = 'Thu Aug 23 2024 10:51:46 GMT-0500 (Central Daylight Time)';
 let delayDate = null;
-let warningActivationTimeMs = 8.64e+7;//millisecond
-let warningDismissalTimeMs = 8.64e+7;//millisecond
+let warningActivation = 8.64e+7;//millisecond
+let warningDismissal = 8.64e+7;//millisecond
 let message = `This website might be instability on $1, from $2 to $3 due to maintenance.`;
 
 function showServerMessage(text) {
