@@ -7,6 +7,7 @@ API_DATA=""
 DEPLOY_TIME=""
 WARNING_ACTIVATION=86400000  # Default value set to 1 day in milliseconds
 WARNING_DISMISSAL=60000       # Default value set to 60 seconds in milliseconds
+VERSION="1.0.0"               # Version of the script
 
 # Function to display usage information
 usage() {
@@ -18,8 +19,15 @@ usage() {
   echo -e "  -d, --delay <date_time>        Specify the delay time in the format 'Sun Aug 25 12:03:19 CDT 2024'"
   echo -e "  -wa, --warning-activation <ms> Set the warning activation time in milliseconds (default is $WARNING_ACTIVATION)"
   echo -e "  -wd, --warning-dismissal <ms>  Set the warning dismissal time in milliseconds (default is $WARNING_DISMISSAL)"
+  echo -e "  -v, --version                  Display the version information"
   echo -e "  -h, --help                     Display this help message"
   exit 1
+}
+
+# Function to display version information
+version() {
+  echo -e "🛠️ relnote version $VERSION"
+  exit 0
 }
 
 # Check if passed date format is valid
@@ -66,6 +74,9 @@ while [[ $# -gt 0 ]]; do
     -wd | --warning-dismissal)
       WARNING_DISMISSAL="$2"
       shift 2
+      ;;
+    -v | --version)
+      version
       ;;
     -h | --help)
       usage
