@@ -130,6 +130,9 @@
                 class="hljs-comment">//example.com/api -wa 3600000 -wd 30000</span>
 </code></pre>
     </li>
+    <li>This landing page example is
+        <pre><code class="lang-bash">./relnote.sh --delay 'TODAY' --warning-activation=86400000 --warning-dismissal=600 </code></pre>
+    </li>
 </ol>
 <h2 id="license">License</h2>
 <p>This project is licensed under the <a href="https://rem.mit-license.org/license.txt">MIT License</a>.</p>
@@ -168,7 +171,7 @@
     apiData = '';
     deployDate = getTomorrowFormattedDate();
     warningActivation = 86400000;
-    warningDismissal = 60000;
+    warningDismissal = 600;
     message = 'This website might be instability on $1, from $2 to $3 due to maintenance.';
     if (deployDate != null && deployDate.length > 0) {
         calculateDate(deployDate);
