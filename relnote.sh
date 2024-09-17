@@ -8,6 +8,7 @@ DEPLOY_TIME=""
 WARNING_ACTIVATION=86400000  # Default value set to 1 day in milliseconds
 WARNING_DISMISSAL=60000       # Default value set to 60 seconds in milliseconds
 VERSION="1.0.0"               # Version of the script
+MESSAGE="This website might be instability on \$1, from \$2 to \$3 due to maintenance."
 
 # Function to display usage information
 usage() {
@@ -17,6 +18,7 @@ usage() {
   echo -e "  -j, --js <js_path>             Specify the JS file path (default is note.js)"
   echo -e "  -u, --url <url>                Specify the URL for API data"
   echo -e "  -d, --delay <date_time>        Specify the delay time in the format 'Sun Aug 25 12:03:19 CDT 2024'"
+  echo -e "  -t, --text <message>           Specify text format '$MESSAGE'"
   echo -e "  -wa, --warning-activation <ms> Set the warning activation time in milliseconds (default is $WARNING_ACTIVATION)"
   echo -e "  -wd, --warning-dismissal <ms>  Set the warning dismissal time in milliseconds (default is $WARNING_DISMISSAL)"
   echo -e "  -v, --version                  Display the version information"
@@ -65,6 +67,10 @@ while [[ $# -gt 0 ]]; do
         usage
       fi
       DEPLOY_TIME="$2"
+      shift 2
+      ;;
+    -t | --text)
+      MESSAGE="$2"
       shift 2
       ;;
     -wa | --warning-activation)
@@ -122,7 +128,7 @@ if [[ -z "$API_DATA" && -z "$DEPLOY_TIME" ]]; then
 fi
 
 # Create script content to inject into HTML
-SCRIPT_CONTENT="<script src='note.js'></script> <script> apiData = '${API_DATA:-""}'; delayDate = '${DEPLOY_TIME:-""}'; warningActivation = $WARNING_ACTIVATION; warningDismissal = $WARNING_DISMISSAL; if (delayDate != null && delayDate.length > 0) { calculateDate(delayDate); } else { getDateByIP(); } </script>"
+SCRIPT_CONTENT="<script src='note.js'></script> <script> apiData = '${API_DATA:-""}'; delayDate = '${DEPLOY_TIME:-""}'; warningActivation = $WARNING_ACTIVATION; warningDismissal = $WARNING_DISMISSAL; message = $MESSAGE; if (delayDate != null && delayDate.length > 0) { calculateDate(delayDate); } else { getDateByIP(); } </script>"
 ESCAPED_JS_CONTENT=$(printf '%s' "$SCRIPT_CONTENT" | sed 's/[&/\]/\\&/g')
 
 # Check if the JavaScript file exists

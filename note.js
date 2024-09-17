@@ -3,6 +3,7 @@ let apiData = 'https://release.ofnur.com/portolia';
 let delayDate = null;
 let warningActivationTimeMs = 8.64e+7;//millisecond
 let warningDismissalTimeMs = 8.64e+7;//millisecond
+let message = `This website might be instability on $1, from $2 to $3 due to maintenance.`;
 
 function showServerMessage(text) {
     let messageDiv = document.createElement('div');
@@ -53,8 +54,10 @@ const formatMaintenanceMessage = (releaseDate) => {
     // Format the maintenance window details
     const startTime = releaseDate.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit'});
     const endTime = endDate.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit'});
-
-    return `This website might be instability on ${formattedDate}, from ${startTime} to ${endTime} (UTC) due to maintenance.`;
+    return message
+        .replace("$1", formattedDate)
+        .replace("$2", startTime)
+        .replace("$3", endTime);
 };
 
 

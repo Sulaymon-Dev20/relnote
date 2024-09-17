@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center" style="margin-top: 3%">
+    <img src="https://github.com/Sulaymon-Dev20/relnote/blob/main/relnote.png?raw=true" width="200"
+         alt='Relnote command logo'/>
+</div>
+<div align="center">
+    <h1>RELNOTE</h1>
+    <div>
+        <a href="https://github.com/quran/quran_android/actions/workflows/build.yml"><img
+                src="https://github.com/quran/quran_android/actions/workflows/build.yml/badge.svg" alt="Build Status"></a>
+        <a href="https://github.com/quran/quran_android/releases/latest"><img
+                src="https://img.shields.io/github/v/release/Sulaymon-Dev20/relnote?include_prereleases&amp;sort=semver"
+                alt="Version"></a>
+        <a href="https://github.com/quran/quran_android/releases"><img
+                src="https://img.shields.io/github/downloads/Sulaymon-Dev20/relnote/total?logo=Github"
+                alt="Github Downloads"></a>
+    </div>
+    <div>
+        The <code>relnote</code> command helps create notifications about release dates by injecting a JavaScript file into
+        an HTML file
+        and configuring notification settings. It allows you to dynamically set variables and manage notification timings
+        through command-line options.
+    </div>
+</div>
+
+<h2 id="features">Features</h2>
+<ul>
+    <li><strong>Injects JavaScript</strong>: Embeds a specified JavaScript file into an HTML file.</li>
+    <li><strong>Configurable Variables</strong>: Sets <code>apiData</code>, <code>delayDate</code>, and timing settings
+        for notifications.
+    </li>
+    <li><strong>API and Delay Options</strong>: Supports both API data URLs and specific release dates.</li>
+    <li><strong>Customizable Timing</strong>: Allows customization of warning activation and dismissal times.</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<ol>
+    <li><p><strong>Download</strong> the <code>relnote</code> script.</p>
+        <pre><code class="lang-bash">git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/Sulaymon-Dev20/relnote.git
+</code></pre>
+    </li>
+    <li><p><strong>Make it executable</strong>:</p>
+        <pre><code class="lang-bash"><span class="hljs-keyword">chmod</span> +<span class="hljs-keyword">x</span> relnote
+</code></pre>
+    </li>
+    <li><p><strong>Move it to a directory in your PATH</strong>:</p>
+        <pre><code class="lang-bash"><span class="hljs-symbol">sudo</span> <span class="hljs-keyword">bash </span>install.sh
+</code></pre>
+    </li>
+</ol>
+<h2 id="usage">Usage</h2>
+<div align="center">
+
+    <a href="https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE"><img
+            src="https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg" alt="HOW TO USE RELNOTE"></a>
+</div>
+
+<pre><code class="lang-bash">   relnote <span class="hljs-string">[OPTIONS]</span>
+</code></pre>
+<h3 id="options">Options</h3>
+<ul>
+    <li>
+        <p><strong>-f, --file
+            <html_path>
+        </strong>
+            Specify the HTML file path (default is index.html).
+        </p>
+    </li>
+    <li>
+        <p><strong>-j, --js
+            <js_path>
+        </strong>
+            Specify the JavaScript file path (default is /usr/share/relnote/note.js).
+        </p>
+    </li>
+    <li>
+        <p><strong>-u, --url
+            <url>
+        </strong>
+            Specify the URL for API data.
+        </p>
+    </li>
+    <li>
+        <p><strong>-d, --delay
+            <date_time>
+        </strong>
+            Specify the delay time in the format &#39;Sun Aug 25 12:03:19 CDT 2024&#39;.
+        </p>
+    </li>
+    <li>
+        <p><strong>-wa, --warning-activation
+            <ms>
+        </strong>
+            Set the warning activation time in milliseconds (default is 86400000).
+        </p>
+    </li>
+    <li>
+        <p><strong>-wd, --warning-dismissal
+            <ms>
+        </strong>
+            Set the warning dismissal time in milliseconds (default is 60000).
+        </p>
+    </li>
+    <li><p><strong>-h, --help</strong>
+        Display this help message.</p>
+    </li>
+</ul>
+<h2 id="examples">Examples</h2>
+<ol>
+    <li>Basic usage with default settings:
+        <pre><code class="lang-bash"><span class="hljs-attribute">relnote</span>
+</code></pre>
+    </li>
+    <li>Inject <strong>note.js</strong> into a custom HTML file and set a release date:
+        <pre><code class="lang-bash">relnote -f myfile<span
+                class="hljs-selector-class">.html</span> -j /path/to/note<span class="hljs-selector-class">.js</span> -d <span
+                class="hljs-string">"Sun Sep 15 10:00:00 CDT 2024"</span>
+</code></pre>
+    </li>
+    <li>Specify API data URL and adjust warning timings:
+        <pre><code class="lang-bash">relnote -f custom<span class="hljs-selector-class">.html</span> -u http:<span
+                class="hljs-comment">//example.com/api -wa 3600000 -wd 30000</span>
+</code></pre>
+    </li>
+</ol>
+<h2 id="license">License</h2>
+<p>This project is licensed under the <a href="https://rem.mit-license.org/license.txt">MIT License</a>.</p>
+<h2 id="author">Author</h2>
+<ul>
+    <li>Name: Nuriddin Bobonorov</li>
+    <li>Email: sulaymon1w@gmail.com</li>
+    <li>Website: <a href="http://portfolio.ofnur.com/">portfolio</a></li>
+</ul>
+
+</body>
+</html>
