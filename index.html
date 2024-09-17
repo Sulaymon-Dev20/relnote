@@ -130,10 +130,22 @@
                 class="hljs-comment">//example.com/api -wa 3600000 -wd 30000</span>
 </code></pre>
     </li>
-    <li>This landing page example is
-        <pre><code class="lang-bash">./relnote.sh --delay 'TODAY' --warning-activation=86400000 --warning-dismissal=600 </code></pre>
-    </li>
 </ol>
+<h2>Relnote Command Explanation</h2>
+
+<p>The command you provided looks like this:</p>
+<code>relnote --deploy 'TODAY' --warning-activation=86400000 --warning-dismissal=600</code>
+
+<h2>Explanation</h2>
+<ul>
+    <li><span class="highlight">--deploy 'TODAY'</span>: This sets the deployment date to <strong>TODAY</strong>. The notification will trigger on the current day.</li>
+    <li><span class="highlight">--warning-activation=86400000</span>: This sets the warning activation to 24 hours before the deployment, as <strong>86400000 milliseconds = 1 day</strong>.</li>
+    <li><span class="highlight">--warning-dismissal=600</span>: The warning will automatically disappear after <strong>600 milliseconds</strong> (0.6 seconds).</li>
+</ul>
+
+<p>If you'd like the warning to remain visible longer, increase the dismissal time. For example, to set the warning to stay for 10 minutes, use:</p>
+<code>--warning-dismissal=600000</code>
+
 <h2 id="license">License</h2>
 <p>This project is licensed under the <a href="https://rem.mit-license.org/license.txt">MIT License</a>.</p>
 <h2 id="author">Author</h2>
