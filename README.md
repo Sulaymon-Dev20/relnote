@@ -17,8 +17,8 @@ through command-line options.
 ## Features
 
 - **Injects JavaScript**: Embeds a specified JavaScript file into an HTML file.
-- **Configurable Variables**: Sets `apiData`, `delayDate`, and timing settings for notifications.
-- **API and Delay Options**: Supports both API data URLs and specific release dates.
+- **Configurable Variables**: Sets `apiData`, `deployDate`, and timing settings for notifications.
+- **API and Deploy Options**: Supports both API data URLs and specific release dates.
 - **Customizable Timing**: Allows customization of warning activation and dismissal times.
 
 ## Installation
@@ -62,8 +62,8 @@ through command-line options.
 - **-u, --url <url>**
   Specify the URL for API data.
 
-- **-d, --delay <date_time>**
-  Specify the delay time in the format 'Sun Aug 25 12:03:19 CDT 2024'.
+- **-d, --deploy <date_time>**
+  Specify the deploy time in the format 'Sun Aug 25 12:03:19 CDT 2024'.
 
 - **-wa, --warning-activation <ms>**
   Set the warning activation time in milliseconds (default is 86400000).

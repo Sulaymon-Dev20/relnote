@@ -1,6 +1,6 @@
 let apiData = 'https://release.ofnur.com/portolia';
 // const deployDate = 'Thu Aug 23 2024 10:51:46 GMT-0500 (Central Daylight Time)';
-let delayDate = null;
+let deployDate = null;
 let warningActivation = 8.64e+7;//millisecond
 let warningDismissal = 8.64e+7;//millisecond
 let message = `This website might be instability on $1, from $2 to $3 due to maintenance.`;
@@ -26,7 +26,7 @@ function showServerMessage(text) {
 
     setTimeout(() => {
         messageDiv.style.display = 'none';
-    }, warningDismissalTimeMs);
+    }, warningDismissal);
 }
 
 function getDateByIP() {
@@ -65,7 +65,7 @@ function calculateDate(dateText) {
     const apiDate = new Date(dateText);
     const currentDate = new Date();
     const diffTime = apiDate - currentDate;
-    if (diffTime > 0 && warningActivationTimeMs >= diffTime) {
+    if (diffTime > 0 && warningActivation >= diffTime) {
         showServerMessage(formatMaintenanceMessage(apiDate));
     }
 }

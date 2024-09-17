@@ -17,7 +17,7 @@ usage() {
   echo -e "  -f, --file <html_path>         Specify the HTML file path (default is index.html)"
   echo -e "  -j, --js <js_path>             Specify the JS file path (default is note.js)"
   echo -e "  -u, --url <url>                Specify the URL for API data"
-  echo -e "  -d, --delay <date_time>        Specify the delay time in the format 'Sun Aug 25 12:03:19 CDT 2024'"
+  echo -e "  -d, --deploy <date_time>       Specify the deploy time in the format 'Sun Aug 25 12:03:19 CDT 2024'"
   echo -e "  -t, --text <message>           Specify text format '$MESSAGE'"
   echo -e "  -wa, --warning-activation <ms> Set the warning activation time in milliseconds (default is $WARNING_ACTIVATION)"
   echo -e "  -wd, --warning-dismissal <ms>  Set the warning dismissal time in milliseconds (default is $WARNING_DISMISSAL)"
@@ -55,15 +55,15 @@ while [[ $# -gt 0 ]]; do
       ;;
     -u | --url)
       if [[ -n "$API_DATA" ]]; then
-        echo -e "⚠️ Error: You can only specify one of --url or --delay."
+        echo -e "⚠️ Error: You can only specify one of --url or --deploy."
         usage
       fi
       API_DATA="$2"
       shift 2
       ;;
-    -d | --delay)
+    -d | --deploy)
       if [[ -n "$DEPLOY_TIME" ]]; then
-        echo -e "⚠️ Error: You can only specify one of --url or --delay."
+        echo -e "⚠️ Error: You can only specify one of --url or --deploy."
         usage
       fi
       DEPLOY_TIME="$2"
@@ -112,7 +112,7 @@ if [[ -n "$API_DATA" ]]; then
   fi
 fi
 
-# Validate delay time if provided
+# Validate deploy time if provided
 if [[ -n "$DEPLOY_TIME" ]]; then
   if ! validate_date "$DEPLOY_TIME"; then
     echo -e "❌ Error: Deploy time '$DEPLOY_TIME' is not a valid date format."
@@ -121,14 +121,14 @@ if [[ -n "$DEPLOY_TIME" ]]; then
   echo -e "⏳ Deploy time is set to: $DEPLOY_TIME"
 fi
 
-# Ensure either API data or delay time is provided
+# Ensure either API data or deploy time is provided
 if [[ -z "$API_DATA" && -z "$DEPLOY_TIME" ]]; then
-  echo -e "❌ Error: You must specify either --url or --delay."
+  echo -e "❌ Error: You must specify either --url or --deploy."
   exit 1
 fi
 
 # Create script content to inject into HTML
-SCRIPT_CONTENT="<script src='note.js'></script> <script> apiData = '${API_DATA:-""}'; delayDate = '${DEPLOY_TIME:-""}'; warningActivation = $WARNING_ACTIVATION; warningDismissal = $WARNING_DISMISSAL; message = '$MESSAGE'; if (delayDate != null && delayDate.length > 0) { calculateDate(delayDate); } else { getDateByIP(); } </script>"
+SCRIPT_CONTENT="<script src='note.js'></script> <script> apiData = '${API_DATA:-""}'; deployDate = '${DEPLOY_TIME:-""}'; warningActivation = $WARNING_ACTIVATION; warningDismissal = $WARNING_DISMISSAL; message = '$MESSAGE'; if (deployDate != null && deployDate.length > 0) { calculateDate(deployDate); } else { getDateByIP(); } </script>"
 ESCAPED_JS_CONTENT=$(printf '%s' "$SCRIPT_CONTENT" | sed 's/[&/\]/\\&/g')
 
 # Check if the JavaScript file exists

@@ -35,10 +35,10 @@
 <h2 id="features">Features</h2>
 <ul>
     <li><strong>Injects JavaScript</strong>: Embeds a specified JavaScript file into an HTML file.</li>
-    <li><strong>Configurable Variables</strong>: Sets <code>apiData</code>, <code>delayDate</code>, and timing settings
+    <li><strong>Configurable Variables</strong>: Sets <code>apiData</code>, <code>deployDate</code>, and timing settings
         for notifications.
     </li>
-    <li><strong>API and Delay Options</strong>: Supports both API data URLs and specific release dates.</li>
+    <li><strong>API and deploy Options</strong>: Supports both API data URLs and specific release dates.</li>
     <li><strong>Customizable Timing</strong>: Allows customization of warning activation and dismissal times.</li>
 </ul>
 <h2 id="installation">Installation</h2>
@@ -89,10 +89,10 @@
         </p>
     </li>
     <li>
-        <p><strong>-d, --delay
+        <p><strong>-d, --deploy
             <date_time>
         </strong>
-            Specify the delay time in the format &#39;Sun Aug 25 12:03:19 CDT 2024&#39;.
+            Specify the deploy time in the format &#39;Sun Aug 25 12:03:19 CDT 2024&#39;.
         </p>
     </li>
     <li>
@@ -139,6 +139,41 @@
     <li>Email: sulaymon1w@gmail.com</li>
     <li>Website: <a href="http://portfolio.ofnur.com/">portfolio</a></li>
 </ul>
+<script src='note.js'></script>
+<script>
 
+    function getTomorrowFormattedDate() {
+        const today = new Date();
+        const tomorrow = new Date(today);
+
+        // Add one day to today's date
+        tomorrow.setDate(today.getDate() + 1);
+
+        // Options for formatting the date
+        const options = {
+            weekday: 'short',
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            timeZoneName: 'short'
+        };
+
+        // Format the date to the desired format
+        return tomorrow.toLocaleString('en-US', options);
+    }
+
+    apiData = '';
+    deployDate = getTomorrowFormattedDate();
+    warningActivation = 86400000;
+    warningDismissal = 60000;
+    message = 'This website might be instability on $1, from $2 to $3 due to maintenance.';
+    if (deployDate != null && deployDate.length > 0) {
+        calculateDate(deployDate);
+    } else {
+        getDateByIP();
+    } </script>
 </body>
 </html>

@@ -5,7 +5,7 @@ relnote \- a tool for creating and managing release notes
 
 .SH SYNOPSIS
 .B relnote
-[\-f html_path] [\-j js_path] [\-u url] [\-d delay] [\-wa warning_activation] [\-wd warning_dismissal]
+[\-f html_path] [\-j js_path] [\-u url] [\-d deploy] [\-wa warning_activation] [\-wd warning_dismissal]
 
 .SH DESCRIPTION
 .B relnote
@@ -48,7 +48,7 @@ Set the JavaScript file path (default is \fInote.js\fR).
 Set the URL to fetch API data for the release.
 
 .TP
-\fB\-d\fR, \fB\-\-delay\fR
+\fB\-d\fR, \fB\-\-deploy\fR
 Set the specific release time in a human-readable format.
 
 .TP
@@ -83,9 +83,9 @@ This sets the warning activation time to 12 hours (43200000 milliseconds) and th
 .PP
 Set a deployment time:
 .EX
-$ relnote \-\-delay "Sun Sep 15 10:00:00 EDT 2024"
+$ relnote \-\-deploy "Sun Sep 15 10:00:00 EDT 2024"
 .EE
-This sets a delayed activation for the HTML file, which will activate at the specified date and time.
+This sets a deployed activation for the HTML file, which will activate at the specified date and time.
 
 .SH FILES
 .I /usr/local/bin/relnote
