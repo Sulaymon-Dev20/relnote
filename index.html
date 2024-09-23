@@ -48,7 +48,7 @@
 </code></pre>
     </li>
     <li><p><strong>Make it executable</strong>:</p>
-        <pre><code class="lang-bash"><span class="hljs-keyword">chmod</span> +<span class="hljs-keyword">x</span> relnote
+        <pre><code class="lang-bash"><span class="hljs-keyword">chmod</span> +<span class="hljs-keyword">x</span> install.sh
 </code></pre>
     </li>
     <li><p><strong>Move it to a directory in your PATH</strong>:</p>
@@ -138,12 +138,19 @@
 
 <h2>Explanation</h2>
 <ul>
-    <li><span class="highlight">--deploy 'TODAY'</span>: This sets the deployment date to <strong>TODAY</strong>. The notification will trigger on the current day.</li>
-    <li><span class="highlight">--warning-activation=86400000</span>: This sets the warning activation to 24 hours before the deployment, as <strong>86400000 milliseconds = 1 day</strong>.</li>
-    <li><span class="highlight">--warning-dismissal=600</span>: The warning will automatically disappear after <strong>600 milliseconds</strong> (0.6 seconds).</li>
+    <li><span class="highlight">--deploy 'TODAY'</span>: This sets the deployment date to <strong>TODAY</strong>. The
+        notification will trigger on the current day.
+    </li>
+    <li><span class="highlight">--warning-activation=86400000</span>: This sets the warning activation to 24 hours
+        before the deployment, as <strong>86400000 milliseconds = 1 day</strong>.
+    </li>
+    <li><span class="highlight">--warning-dismissal=600</span>: The warning will automatically disappear after <strong>600
+        milliseconds</strong> (0.6 seconds).
+    </li>
 </ul>
 
-<p>If you'd like the warning to remain visible longer, increase the dismissal time. For example, to set the warning to stay for 10 minutes, use:</p>
+<p>If you'd like the warning to remain visible longer, increase the dismissal time. For example, to set the warning to
+    stay for 10 minutes, use:</p>
 <code>--warning-dismissal=600000</code>
 
 <h2 id="license">License</h2>
@@ -156,7 +163,6 @@
 </ul>
 <script src='note.js'></script>
 <script>
-
     function getTomorrowFormattedDate() {
         const today = new Date();
         const tomorrow = new Date(today);

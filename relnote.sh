@@ -17,6 +17,7 @@ usage() {
   echo -e "  -f, --file <html_path>         Specify the HTML file path (default is index.html)"
   echo -e "  -j, --js <js_path>             Specify the JS file path (default is note.js)"
   echo -e "  -u, --url <url>                Specify the URL for API data"
+#  echo -e "  -r, --remove                   Remove or deactivate the release note alert"
   echo -e "  -d, --deploy <date_time>       Specify the deploy time in the format 'Sun Aug 25 12:03:19 CDT 2024'"
   echo -e "  -t, --text <message>           Specify text format '$MESSAGE'"
   echo -e "  -wa, --warning-activation <ms> Set the warning activation time in milliseconds (default is $WARNING_ACTIVATION)"
@@ -60,6 +61,9 @@ while [[ $# -gt 0 ]]; do
       fi
       API_DATA="$2"
       shift 2
+      ;;
+    -r | --remove)
+      remove
       ;;
     -d | --deploy)
       if [[ -n "$DEPLOY_TIME" ]]; then
@@ -141,9 +145,13 @@ fi
 HTML_DIR=$(dirname "$HTML_FILE")
 cp "$REL_JS" "$HTML_DIR">/dev/null 2>&1
 
-# Insert scripts before closing </body> tag
+# Insert scriptsre before closing </body> tag
 if grep -q "</body>" "$HTML_FILE"; then
-  sed -i '' "s|</body>|$ESCAPED_JS_CONTENT</body>|g" "$HTML_FILE"
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    sed -i '' "s|</body>|$ESCAPED_JS_CONTENT</body>|g" "$HTML_FILE"
+  else
+    sed -i "s|</body>|$ESCAPED_JS_CONTENT</body>|g" "$HTML_FILE"
+  fi
 else
   echo -e "❌ Error: No closing </body> tag found in the HTML file."
   exit 1
